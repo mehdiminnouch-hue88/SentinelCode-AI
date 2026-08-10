@@ -1,0 +1,5 @@
+google-genai
+streamlit
+pydantic
+fpdf2
+requests
