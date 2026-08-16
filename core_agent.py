@@ -25,9 +25,6 @@ class RepositoryAuditReport(BaseModel):
     summary: str = Field(description="High-level assessment summary of the code repository")
     total_files_analyzed: int = Field(description="Count of files parsed")
     vulnerabilities: List[FileVulnerability] = Field(default_factory=list)
-
-client = genai.Client()
-
 ALLOWED_EXTENSIONS = {'.py', '.js', '.ts', '.jsx', '.tsx', '.cpp', '.c', '.h', '.java', '.go', '.php', '.rs', '.sql', '.html', '.sh'}
 IGNORE_DIRS = {'node_modules', '.git', 'venv', '_pycache_', 'dist', 'build'}
 
