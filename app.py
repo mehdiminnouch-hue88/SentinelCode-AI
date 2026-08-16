@@ -1,9 +1,7 @@
 import streamlit as st
 import json
 import os
-# Set Gemini API Key in environment before importing core_agent
-if "GEMINI_API_KEY" in st.secrets:
-    os.environ["GEMINI_API_KEY"] = st.secrets["GEMINI_API_KEY"]
+
 from core_agent import (
     extract_code_from_zip,
     analyze_repository,

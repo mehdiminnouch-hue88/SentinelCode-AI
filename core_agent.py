@@ -1,5 +1,6 @@
 import os
 import json
+from turtle import st
 import zipfile
 import io
 import requests
@@ -58,12 +59,19 @@ def _get_client():
     """Lazy client init so importing this module never crashes just because
     the key isn't set yet -- the Streamlit sidebar status check needs that."""
     global _client
-    if not os.environ.get("GEMINI_API_KEY"):
+    
+    # 1. get the key os.environ wla st.secrets 
+    api_key = os.environ.get("GEMINI_API_KEY") or st.secrets.get("GEMINI_API_KEY", "")
+    
+    if not api_key:
         raise RuntimeError(
             "GEMINI_API_KEY manquant. Configure la variable d'environnement avant de lancer un audit."
         )
+        
     if _client is None:
-        _client = genai.Client()
+        # api_key  401
+        _client = genai.Client(api_key=api_key)
+        
     return _client
 
 
