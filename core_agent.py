@@ -12,6 +12,7 @@ import platform
 from typing import List, Tuple
 from pydantic import BaseModel, Field
 from google import genai
+from google.genai import types
 
 try:
     import resource
@@ -339,10 +340,10 @@ def analyze_repository(files_map: dict) -> dict:
     response = _get_client().models.generate_content(
         model="gemini-2.5-flash",
         contents=f"{system_instruction}\n\n{prompt}",
-        config={
+        config=types .GenerateContentConfig(
             "response_mime type": "application/json",
             "response_schema": RepositoryAuditReport,
-        },
+        ),
     )
     return json.loads(response.text)
     # NOTE (API migration, Aug 2026): client.models.generate_content() is the legacy
