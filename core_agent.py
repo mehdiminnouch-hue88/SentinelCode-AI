@@ -336,7 +336,15 @@ def analyze_repository(files_map: dict) -> dict:
 
     Respond ONLY in valid JSON matching the schema. Always include runnable Python unit tests for patches where applicable.
     """
-
+    response = _get_client().models.generate_content(
+        model="gemini-2.5-flash",
+        contents=f"{system_instruction}\n\n{prompt}",
+        config={
+            "reponse_mime type": "application/json",
+            "response_schema": RepositoryAuditReport,
+        },
+    )
+    return json.loads(response.text)
     # NOTE (API migration, Aug 2026): client.models.generate_content() is the legacy
     # call pattern. Google now recommends the Interactions API (client.interactions.create),
     # which is GA and required for some newer model behaviors. Structured output moved
