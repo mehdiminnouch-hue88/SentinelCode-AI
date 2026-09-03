@@ -70,8 +70,12 @@ def _get_client():
         )
         
     if _client is None:
-        # api_key  401
-        _client = genai.Client(api_key=api_key)
+        _client = genai.Client(
+            api_key=api_key,
+            http_options=types.HttpOptions(
+                headers={"x-goog-api-key": api_key}
+            )
+        )
         
     return _client
 
