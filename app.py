@@ -58,7 +58,7 @@ with tab1:
 
 # Tab 2: Local ZIP
 with tab2:
-    st.write("رفع ملف ZIP محلي للمشروع البرمجي.")
+    st.write("Upload a local ZIP file for the software project.")
     uploaded_file = st.file_uploader("Upload ZIP Repository", type=["zip"])
     if uploaded_file and st.button("🚀 Audit Local ZIP", type="primary", key="btn_zip", disabled=not has_api_key):
         with st.spinner("Processing archive & analyzing..."):
