@@ -340,7 +340,7 @@ def analyze_repository(files_map: dict) -> dict:
         model="gemini-2.5-flash",
         contents=f"{system_instruction}\n\n{prompt}",
         config={
-            "reponse_mime type": "application/json",
+            "response_mime type": "application/json",
             "response_schema": RepositoryAuditReport,
         },
     )
