@@ -1,6 +1,6 @@
 import os
 import json
-from turtle import st
+import streamlit as st
 import zipfile
 import io
 import requests
