@@ -340,9 +340,9 @@ def analyze_repository(files_map: dict) -> dict:
     response = _get_client().models.generate_content(
         model="gemini-2.5-flash",
         contents=f"{system_instruction}\n\n{prompt}",
-        config=types .GenerateContentConfig(
-            "response_mime type": "application/json",
-            "response_schema": RepositoryAuditReport,
+        config=types.GenerateContentConfig(
+            response_mime_type="application/json",
+            response_schema=RepositoryAuditReport,
         ),
     )
     return json.loads(response.text)
