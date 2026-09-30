@@ -1,6 +1,7 @@
-google-genai
+anthropic
 streamlit
 pydantic
 fpdf2
 requests
 python-dotenv
+html
